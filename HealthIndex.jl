@@ -1,6 +1,8 @@
 module HealthIndex
 export bmi,bai,bsi,bbi,corpi,hbi
 export bodymassindex,bodyadiposeindex,bodyshapeindex,bodybuildindex,corpulenceindex,hellballindex
+export birthrate,crudebirthrate,mortalityrate,fertilityrate,populationgrowth
+
 #For Body Mass Index as bmi
 function bmi(mass,height)
     bodyMass = mass/(height^2)
@@ -96,6 +98,34 @@ end
 function heelballindex(heel_breadth,ball_breadth)
     heelIndex = heel_breadth * 100/ball_breadth
     return heelIndex
+end
+
+#Health Indicators For General Population
+#For BirthRate
+function birthrate(number_of_live_births::Int,population::Int)
+    birthRate = number_of_live_births/population * 1000
+    return birthRate
+end
+#For Crude Birth Rate
+function crudebirthrate(number_of_live_births::Int,population_at_mid_year::Int)
+        crudeBirth = number_of_live_births/population_at_mid_year  * 1000
+        return crudeBirth
+end
+
+#For Mortality Rate
+function mortalityrate(number_of_deaths::Int,population::Int)
+        mortality = number_of_deaths/population * 1000
+        return mortality
+end
+#For Natural Population Growth
+function populationgrowth(number_of_births::Int,number_of_death::Int)
+        naturalPopGrowth = number_of_births-number_of_death * 1000
+        return naturalPopGrowth
+end
+#Fertility Rate
+function fertilityrate(number_of_births::Int,population_of_women_in_fertilityage::Int)
+        fertilityRate = number_of_births/population_of_women_in_fertilityage * 1000
+        return fertilityRate
 end
 end
 
