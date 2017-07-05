@@ -5,14 +5,22 @@ export ParentType,parenttype,type_hierarchy
 
 function ParentType(x::DataType,n=5)
 	for i in 1:n
-		x = supertype(x)
+		if v"0.4" <= VERSION < v"0.6-" # use super for versions specific to 0.4 release series
+			x = super(x)
+		else
+			x = supertype(x)
+		end
 		println(x)
 	end
 end
 
 function parenttype(x::DataType,n=5)
 	for i in 1:n
-		x = super(x)#For Julia 0.4.5
+		if v"0.4" <= VERSION < v"0.6-" # use super for versions specific to 0.4 release series
+			x = super(x)
+		else
+			x = supertype(x)
+		end
 		println(x)
 	end
 end
@@ -30,4 +38,4 @@ function type_hierarchy(t::DataType,level=0)
 end	
 end
 
-#@J-secur1ty JCharisTech
+# @JCharisTech J-secur1ty
